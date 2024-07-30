@@ -1,11 +1,28 @@
 import numpy as np
+import spectral.io.envi as envi
+from datetime import datetime
+import os
+class data_handling:
+    #change dat type in info
+    def convert_date(self, timestamp):
+        self.timestamp = timestamp
+        d = datetime.utcfromtimestamp(self.timestamp)
+        formated_date = d.strftime('%d %b %Y')
+        return formated_date
 
+    def envi_to_npz(self, dat):
+        self.dat = dat
+        img = envi.open(self.dat).load()
+        info = self.dat.stat()
+        fname = self.convert_date(info.st_mtime) 
+        np.savez(fname, data=img)
+        return print("saved as: {fname}.npz")
 
 class analysis:
     """ read hyperspectral data and KMeans labels """
     
-    def __init__(self):
-        return
+ #   def __init__(self):
+  #      return
 
     def findspec(self, region):
         """ find the average spectral profile of specified region """
@@ -26,6 +43,10 @@ class analysis:
             temp_arr0[i] += np.average(temp_list)
         return temp_arr0
 
+    def compare(self, dat1, dat2):
+
+        # some algorithm for comparison
+        pass
  
 class kmeans:
 
@@ -93,7 +114,9 @@ class kmeans:
         chol_per = (len(ch)/len(temp_km))*100
 
         return chol_per    
-    
+
+
+
 class help:
     def __init__(self):
         x = """
