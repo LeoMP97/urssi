@@ -1,0 +1,3 @@
+[submodule "urrssi-pixiclear-demo"]
+	path = urrssi-pixiclear-demo
+	url = https://github.com/LeoMP97/urrssi-pixi-demo
