@@ -1,21 +1,29 @@
 import numpy as np
 import spectral.io.envi as envi
-
+import pandas as pd
 
 class data_handling:
-    def envi_to_npz(self, dat, fname):
+    def __init__(self, dat, fname):
         self.dat = dat
+        self.fname = fname
+
+    def envi_to_npz(self):
         img = envi.open(self.dat).load()
-        np.savez(fname, data=img)
-        return print("saved as: {fname}.npz")
+        np.savez(self.fname, data=img)
+        return print("saved as: {self.fname}.npz")
 
     def envi_to_csv():
         """code to conver to csv"""
-        return print("saved as: {fname}.csv")
+        df = pd.Dataframe(self.dat)
+        df.to_csv("{self.fname}.csv")
+        return print("saved as: {self.fname}.csv")
 
     def envi_to_pickle():
+        df = pd.Dataframe(self.dat)
+        df.to_pickle("{self.fname}.pkl")
+
         """code to convert to pickle"""
-        return print("saved as: {fname}.pkl")
+        return print("saved as: {self.fname}.pkl")
 
 
 class analysis:
