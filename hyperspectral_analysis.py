@@ -1,22 +1,22 @@
 import numpy as np
 import spectral.io.envi as envi
-from datetime import datetime
-import os
-class data_handling:
-    #change dat type in info
-    def convert_date(self, timestamp):
-        self.timestamp = timestamp
-        d = datetime.utcfromtimestamp(self.timestamp)
-        formated_date = d.strftime('%d %b %Y')
-        return formated_date
 
-    def envi_to_npz(self, dat):
+
+class data_handling:
+    
+    def envi_to_npz(self, dat, fname):
         self.dat = dat
         img = envi.open(self.dat).load()
-        info = self.dat.stat()
-        fname = self.convert_date(info.st_mtime) 
         np.savez(fname, data=img)
         return print("saved as: {fname}.npz")
+
+    def envi_to_csv:
+        ''' code to conver to csv'''
+        return print("saved as: {fname}.csv")
+
+    def envi_to_pickle:
+        ''' code to convert to pickle '''       `
+        return print("saved as: {fname}.pkl")
 
 class analysis:
     """ read hyperspectral data and KMeans labels """
