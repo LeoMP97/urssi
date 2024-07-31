@@ -1,3 +1,3 @@
-print("hello world")
-x = 1 + 2
-print(x)
+def add(a,b):
+    c = a + b
+    return c
