@@ -9,8 +9,8 @@ class data_handling:
 
     def envi_to_npz(self):
         img = envi.open(self.dat).load()
-        np.savez(self.fname, data=img)
-        return print("saved as: {self.fname}.npz")
+        return np.savez(self.fname, data=img), \
+                print("saved as: {self.fname}.npz")
 
     def envi_to_csv():
         """code to conver to csv"""
